@@ -1,12 +1,19 @@
 import '../stylesheets/Menu.css';
+import Recipe from './Recipe';
 
-const Menu = (props) => {
+const Menu = ({ recipes, title }) => {
+  console.log(recipes, title);
+  console.log('Menu');
   return (
     <article>
       <header>
-        <h1>{props.title}</h1>
+        <h1>{title}</h1>
       </header>
-      <div className='recipes'></div>
+      <div className="recipes">
+        {recipes.map((recipe, i) => (
+          <Recipe key={i} {...recipe} />
+        ))}
+      </div>
     </article>
   );
 };
