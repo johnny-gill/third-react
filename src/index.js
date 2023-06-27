@@ -1,11 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import StarRating from './ch6/StarRating';
+import App from './ch6/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <StarRating
-    totalStars={10}
-    style={{ backgroundColor: 'lightblue' }}
-    onDoubleClick={() => alert('double click')}
-  />
-);
+root.render(<App />);
