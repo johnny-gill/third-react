@@ -1,6 +1,10 @@
 import Color from './Color';
 
-const ColorList = ({ colors = [] }) => {
+const ColorList = ({
+  colors = [],
+  onRemoveColor = (f) => f,
+  onRateColor = (f) => f,
+}) => {
   if (!colors.length) {
     return <div>표시할 색이 없습니다.</div>;
   }
@@ -8,7 +12,12 @@ const ColorList = ({ colors = [] }) => {
   return (
     <div>
       {colors.map((color) => (
-        <Color key={color.id} {...color} />
+        <Color
+          key={color.id}
+          {...color}
+          onRemove={onRemoveColor}
+          onRate={onRateColor}
+        />
       ))}
     </div>
   );
