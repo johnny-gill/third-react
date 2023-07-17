@@ -1,3 +1,4 @@
+import { useColors } from "./ColorProvider";
 import { useInput } from "./hooks";
 
 const AddColorForm = ({ onNewColor = (f) => f }) => {
@@ -5,10 +6,10 @@ const AddColorForm = ({ onNewColor = (f) => f }) => {
 
   const [titleProps, resetTitle] = useInput("");
   const [colorProps, resetColor] = useInput("");
-
+  const { addColor } = useColors();
   const handleSubmit = (e) => {
     e.preventDefault();
-    onNewColor(titleProps.value, colorProps.value);
+    addColor(titleProps.value, colorProps.value);
     resetTitle();
     resetColor();
   };
@@ -21,11 +22,7 @@ const AddColorForm = ({ onNewColor = (f) => f }) => {
         required
         {...titleProps}
       />
-      <input
-        type="color"
-        required
-        {...colorProps}
-      />
+      <input type="color" required {...colorProps} />
       <button>추가</button>
     </form>
   );

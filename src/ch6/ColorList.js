@@ -1,10 +1,9 @@
-import Color from './Color';
+import Color from "./Color";
+import { useColors } from "./ColorProvider";
 
-const ColorList = ({
-  colors = [],
-  onRemoveColor = (f) => f,
-  onRateColor = (f) => f,
-}) => {
+const ColorList = () => {
+  const { colors } = useColors();
+
   if (!colors.length) {
     return <div>표시할 색이 없습니다.</div>;
   }
@@ -12,12 +11,7 @@ const ColorList = ({
   return (
     <div>
       {colors.map((color) => (
-        <Color
-          key={color.id}
-          {...color}
-          onRemove={onRemoveColor}
-          onRate={onRateColor}
-        />
+        <Color key={color.id} {...color} />
       ))}
     </div>
   );
