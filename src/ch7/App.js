@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useState } from "react";
 
 const App = () => {
@@ -30,6 +30,28 @@ const App = () => {
   useEffect(() => {
     console.log("ex3");
   }, [word3]);
+
+  // ex4 -> 렌더링할때마다 새로운 함수가 된다.
+  const fn = () => {
+    console.log("hello");
+    console.log("world");
+  };
+
+  useEffect(() => {
+    console.log("ex4");
+    fn();
+  }, [fn]);
+
+  // ex5
+  const fn2 = useCallback(() => {
+    console.log("hello");
+    console.log("world");
+  }, []);
+
+  useEffect(() => {
+    console.log("ex5");
+    fn2();
+  }, [fn2]);
 
   return <h1>Open the console</h1>;
 };
