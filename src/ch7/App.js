@@ -1,41 +1,37 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo } from "react";
+import { useState } from "react";
 
 const App = () => {
-  const [val, setVal] = useState("");
-  const [phrase, setPhrase] = useState("example phase");
-
-  const createPhrase = () => {
-    setPhrase(val);
-    setVal("");
-  };
+  const [, forceRender] = useState();
 
   useEffect(() => {
-    console.log("initial useEffect");
+    window.addEventListener("keydown", forceRender);
+    return () => window.removeEventListener("keydown", forceRender);
   }, []);
 
   useEffect(() => {
-    console.log(`val : ${val}`);
-  }, [val]);
+    console.log("fresh render");
+  });
 
+  // ex1
+  const word1 = "abc";
   useEffect(() => {
-    console.log(`phrase : ${phrase}`);
-  }, [phrase]);
+    console.log("ex1");
+  }, [word1]);
 
+  // ex2 -> 렌더링할때마다 새로운 instance가 된다
+  const word2 = ["abc", "def"];
   useEffect(() => {
-    console.log("change val or phrase");
-  }, [val, phrase]);
+    console.log("ex2");
+  }, [word2]);
 
-  return (
-    <>
-      <label>Favorite phrase : </label>
-      <input
-        value={val}
-        placeholder={phrase}
-        onChange={(e) => setVal(e.target.value)}
-      />
-      <button onClick={createPhrase}>send</button>
-    </>
-  );
+  // ex3
+  const word3 = useMemo(() => ["abc", "def"], []);
+  useEffect(() => {
+    console.log("ex3");
+  }, [word3]);
+
+  return <h1>Open the console</h1>;
 };
 
 export default App;
