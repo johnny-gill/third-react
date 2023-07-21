@@ -11,7 +11,7 @@ const GitHubUser = ({ login }) => {
     if (!data) return; // 2. 렌더링 완료(1) 후 데이터가 없으니 return
     if (data.login === login) return;
     console.log("useEffect11");
-    const { name, avatar_url, location } = data; 
+    const { name, avatar_url, location } = data;
     saveJSON(login, { name, login, avatar_url, location }); // 6. 렌더링 완료(5) 후 저장
   }, [data]);
 
@@ -26,7 +26,8 @@ const GitHubUser = ({ login }) => {
       .catch(console.error);
   }, [login]); //7. 렌더링 완료(5) 후 같은 login이니 안탐
 
-  if (data) { // 1. data 없으니 return null, 5. data 뿌려줌
+  if (data) {
+    // 1. data 없으니 return null, 5. data 뿌려줌
     console.log(data);
     return <pre>{JSON.stringify(data, null, 2)}</pre>;
   }
