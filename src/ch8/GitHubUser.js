@@ -1,13 +1,15 @@
-import { useFetch } from "./hooks";
+import Fetch from "./Fetch";
 
 const GitHubUser = ({ login }) => {
-  const {loading, data, error} = useFetch(
-    `https://api.github.com/users/${login}`
+  return (
+    <Fetch
+      uri={`https://api.github.com/users/${login}`}
+      handleSuccess={onSuccess}
+    />
   );
+};
 
-  if (loading) return <h1>loading....</h1>;
-  if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
-
+const onSuccess = (data) => {
   return (
     <div className="githubUser">
       <img src={data.avatar_url} alt={data.login} style={{ width: 200 }} />
