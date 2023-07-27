@@ -1,5 +1,5 @@
 import { useState } from "react";
-import GitHubUser from "./GitHubUser";
+// import GitHubUser from "./GitHubUser";
 import SearchForm from "./SearchForm";
 
 const App6 = () => {
@@ -7,7 +7,7 @@ const App6 = () => {
   const [login, setLogin] = useState("moontahoe");
   return (
     <>
-      <GitHubUser login={login} />
+      {/* <GitHubUser login={login} /> */}
       <SearchForm onSearch={setLogin} />
     </>
   );

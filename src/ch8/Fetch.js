@@ -19,14 +19,14 @@ const useFetch = (uri) => {
 
 const Fetch = ({
   uri,
-  handleSuccess,
+  onSuccess,
   onLoading = <p>loading...</p>,
   onError = (error) => <pre>{JSON.stringify(error, null, 2)}</pre>,
 }) => {
   const { data, error, loading } = useFetch(uri);
   if (loading) return onLoading;
   if (error) return onError(error);
-  if (data) return handleSuccess(data);
+  if (data) return onSuccess({ data });
 };
 
 export default Fetch;
