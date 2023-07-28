@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import Star from "./ch10/Star";
+import CheckBox from "./ch10/CheckBox";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Star />);
+root.render(<CheckBox />);
