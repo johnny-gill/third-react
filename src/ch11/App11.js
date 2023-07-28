@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import {
   About,
   Contact,
@@ -24,6 +24,8 @@ const App11 = () => (
       <Route path="products" element={<Products />} />
       <Route path="contact" element={<Contact />} />
       <Route path="*" element={<Error />} />
+
+      <Route path="services" element={<Navigate to="/about/services" />} />
     </Routes>
   </div>
 );
