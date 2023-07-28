@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export const Home = () => (
   <div>
@@ -35,3 +35,13 @@ export const Contact = () => (
     <h1>[고객지원]</h1>
   </div>
 );
+
+export const Error = () => {
+  const location = useLocation();
+  console.log(location);
+  return (
+    <div>
+      <h1>Resource not founds at {location.pathname}</h1>
+    </div>
+  );
+};
